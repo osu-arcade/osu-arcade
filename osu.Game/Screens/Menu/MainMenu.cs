@@ -97,6 +97,7 @@ namespace osu.Game.Screens.Menu
         private Bindable<double> holdDelay;
         private Bindable<bool> loginDisplayed;
         private Bindable<bool> showMobileDisclaimer;
+        private Bindable<bool> showArcadeDisclaimer;
 
         private HoldToExitGameOverlay holdToExitGameOverlay;
 
@@ -125,6 +126,7 @@ namespace osu.Game.Screens.Menu
             holdDelay = config.GetBindable<double>(OsuSetting.UIHoldActivationDelay);
             loginDisplayed = statics.GetBindable<bool>(Static.LoginOverlayDisplayed);
             showMobileDisclaimer = config.GetBindable<bool>(OsuSetting.ShowMobileDisclaimer);
+            showArcadeDisclaimer = config.GetBindable<bool>(OsuSetting.ShowArcadeDisclaimer);
 
             if (host.CanExit)
             {
@@ -275,6 +277,9 @@ namespace osu.Game.Screens.Menu
         [CanBeNull]
         private ScheduledDelegate mobileDisclaimerSchedule;
 
+        [CanBeNull]
+        private ScheduledDelegate arcadeDisclaimerSchedule;
+
         protected override void LogoArriving(OsuLogo logo, bool resuming)
         {
             base.LogoArriving(logo, resuming);
@@ -309,7 +314,19 @@ namespace osu.Game.Screens.Menu
 
         private bool onLogoClick(Func<bool> originalAction)
         {
-            if (showMobileDisclaimer.Value)
+            if (showArcadeDisclaimer.Value)
+            {
+                arcadeDisclaimerSchedule?.Cancel();
+                arcadeDisclaimerSchedule = Scheduler.AddDelayed(() =>
+                {
+                    dialogOverlay.Push(new ArcadeDisclaimerDialog(() =>
+                    {
+                        // showArcadeDisclaimer.Value = false;
+                        // displayLoginIfApplicable();
+                    }));
+                }, 500);
+            }
+            else if (showMobileDisclaimer.Value)
             {
                 mobileDisclaimerSchedule?.Cancel();
                 mobileDisclaimerSchedule = Scheduler.AddDelayed(() =>
@@ -505,6 +522,38 @@ namespace osu.Game.Screens.Menu
                         Text = ButtonSystemStrings.MobileDisclaimerOkButton,
                         Action = confirmed,
                     },
+                };
+            }
+        }
+
+        // copied from the mobile dialog because i want to share a similar message
+        private partial class ArcadeDisclaimerDialog : PopupDialog
+        {
+            public ArcadeDisclaimerDialog(Action confirmed)
+            {
+                HeaderText = "Welcome to osu!arcade";
+                BodyText =
+@"By default, you are in operator/event mode (or just regular osu!).
+
+To enable and configure arcade mode, head to the added 'Arcade' tab in the settings.
+
+Please share any feedback at:
+github.com/osu-arcade/osu-arcade";
+
+                Icon = FontAwesome.Solid.SmileBeam;
+
+                Buttons = new PopupDialogButton[]
+                {
+                    new PopupDialogOkButton
+                    {
+                        Text = "Take me to those settings now",
+                        Action = confirmed
+                    },
+                    new PopupDialogCancelButton
+                    {
+                        Text = ButtonSystemStrings.MobileDisclaimerOkButton,
+                        Action = confirmed,
+                    }
                 };
             }
         }
