@@ -23,7 +23,7 @@ using osuTK;
 namespace osu.Game.Overlays.FirstRunSetup
 {
     [LocalisableDescription(typeof(FirstRunSetupOverlayStrings), nameof(FirstRunSetupOverlayStrings.WelcomeTitle))]
-    public partial class ScreenWelcome : WizardScreen
+    public partial class ScreenLanguage : WizardScreen
     {
         [BackgroundDependencyLoader]
         private void load(FrameworkConfigManager frameworkConfig)
@@ -37,7 +37,7 @@ namespace osu.Game.Overlays.FirstRunSetup
                     RowDimensions = new[]
                     {
                         // Avoid height changes when changing language.
-                        new Dimension(GridSizeMode.AutoSize, minSize: 100),
+                        new Dimension(GridSizeMode.AutoSize),
                     },
                     Content = new[]
                     {
@@ -45,18 +45,20 @@ namespace osu.Game.Overlays.FirstRunSetup
                         {
                             new OsuTextFlowContainer(cp => cp.Font = OsuFont.Default.With(size: CONTENT_FONT_SIZE))
                             {
-                                Text = FirstRunSetupOverlayStrings.WelcomeDescription,
+                                Text = @"Please select the default language to be used in user mode.
+
+Right now, tatakae! does not have localisation for tatakae-specific strings. Sorry :(",
                                 RelativeSizeAxes = Axes.X,
                                 AutoSizeAxes = Axes.Y
                             },
                         },
                     }
                 },
-                new SettingsCheckbox
-                {
-                    LabelText = GeneralSettingsStrings.PreferOriginalMetadataLanguage,
-                    Current = frameworkConfig.GetBindable<bool>(FrameworkSetting.ShowUnicode)
-                },
+                // new SettingsCheckbox
+                // {
+                //     LabelText = GeneralSettingsStrings.PreferOriginalMetadataLanguage,
+                //     Current = frameworkConfig.GetBindable<bool>(FrameworkSetting.ShowUnicode)
+                // },
                 new LanguageSelectionFlow
                 {
                     RelativeSizeAxes = Axes.X,

@@ -36,15 +36,15 @@ namespace osu.Game.Overlays
         [BackgroundDependencyLoader(permitNulls: true)]
         private void load(LegacyImportManager? legacyImportManager)
         {
-            AddStep<ScreenWelcome>();
-            AddStep<ScreenUIScale>();
+            AddStep<ScreenLanguage>();
+            // AddStep<ScreenUIScale>();
             AddStep<ScreenBeatmaps>();
-            if (legacyImportManager?.SupportsImportFromStable == true)
-                AddStep<ScreenImportFromStable>();
-            AddStep<ScreenBehaviour>();
+            // if (legacyImportManager?.SupportsImportFromStable == true)
+            // AddStep<ScreenImportFromStable>();
+            // AddStep<ScreenBehaviour>();
 
             Header.Title = FirstRunSetupOverlayStrings.FirstRunSetupTitle;
-            Header.Description = FirstRunSetupOverlayStrings.FirstRunSetupDescription;
+            Header.Description = "Set up tatakae! to suit you";
         }
 
         protected override void LoadComplete()

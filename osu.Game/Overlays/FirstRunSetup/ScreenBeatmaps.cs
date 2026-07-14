@@ -51,7 +51,7 @@ namespace osu.Game.Overlays.FirstRunSetup
                 new OsuTextFlowContainer(cp => cp.Font = OsuFont.Default.With(size: CONTENT_FONT_SIZE))
                 {
                     Colour = OverlayColourProvider.Content1,
-                    Text = FirstRunSetupBeatmapScreenStrings.Description,
+                    Text = "tatakae! does not come with maps out of the box. You may download beatmaps from the official osu! servers below.",
                     RelativeSizeAxes = Axes.X,
                     AutoSizeAxes = Axes.Y
                 },
@@ -74,7 +74,7 @@ namespace osu.Game.Overlays.FirstRunSetup
                 new OsuTextFlowContainer(cp => cp.Font = OsuFont.Default.With(size: CONTENT_FONT_SIZE))
                 {
                     Colour = OverlayColourProvider.Content1,
-                    Text = FirstRunSetupBeatmapScreenStrings.TutorialDescription,
+                    Text = "It is technically optional to have the tutorial, but then the tatakae! tutorial options will be non-functional or broken. You can download it below.",
                     RelativeSizeAxes = Axes.X,
                     AutoSizeAxes = Axes.Y
                 },
@@ -90,7 +90,7 @@ namespace osu.Game.Overlays.FirstRunSetup
                 new OsuTextFlowContainer(cp => cp.Font = OsuFont.Default.With(size: CONTENT_FONT_SIZE))
                 {
                     Colour = OverlayColourProvider.Content1,
-                    Text = FirstRunSetupBeatmapScreenStrings.BundledDescription,
+                    Text = "You can also grab a bundle of featured artist songs playable for new players.",
                     RelativeSizeAxes = Axes.X,
                     AutoSizeAxes = Axes.Y
                 },
@@ -112,13 +112,13 @@ namespace osu.Game.Overlays.FirstRunSetup
                     RelativeSizeAxes = Axes.X,
                     AutoSizeAxes = Axes.Y
                 },
-                new OsuTextFlowContainer(cp => cp.Font = OsuFont.Default.With(size: CONTENT_FONT_SIZE))
-                {
-                    Colour = OverlayColourProvider.Content1,
-                    Text = FirstRunSetupBeatmapScreenStrings.ObtainMoreBeatmaps,
-                    RelativeSizeAxes = Axes.X,
-                    AutoSizeAxes = Axes.Y
-                },
+                // new OsuTextFlowContainer(cp => cp.Font = OsuFont.Default.With(size: CONTENT_FONT_SIZE))
+                // {
+                //     Colour = OverlayColourProvider.Content1,
+                //     Text = FirstRunSetupBeatmapScreenStrings.ObtainMoreBeatmaps,
+                //     RelativeSizeAxes = Axes.X,
+                //     AutoSizeAxes = Axes.Y
+                // },
             };
         }
 
