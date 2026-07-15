@@ -39,6 +39,7 @@ namespace osu.Game.Overlays
             AddStep<ScreenLanguage>();
             // AddStep<ScreenUIScale>();
             AddStep<ScreenBeatmaps>();
+            AddStep<ScreenOperatorKey>();
             // if (legacyImportManager?.SupportsImportFromStable == true)
             // AddStep<ScreenImportFromStable>();
             // AddStep<ScreenBehaviour>();

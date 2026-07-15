@@ -58,6 +58,7 @@ using osu.Game.Overlays.Music;
 using osu.Game.Overlays.Notifications;
 using osu.Game.Overlays.OSD;
 using osu.Game.Overlays.SkinEditor;
+using osu.Game.Overlays.Tatakae;
 using osu.Game.Overlays.Toolbar;
 using osu.Game.Rulesets.Mods;
 using osu.Game.Scoring;
@@ -143,6 +144,8 @@ namespace osu.Game
         private ChangelogOverlay changelogOverlay;
 
         private SkinEditorOverlay skinEditor;
+
+        private TatakaeOverlay tatakaeOverlay;
 
         private Container overlayContent;
 
@@ -1226,6 +1229,7 @@ namespace osu.Game
             loadComponentSingleFile(beatmapSetOverlay = new BeatmapSetOverlay(), overlayContent.Add, true);
             loadComponentSingleFile(wikiOverlay = new WikiOverlay(), overlayContent.Add, true);
             loadComponentSingleFile(skinEditor = new SkinEditorOverlay(ScreenContainer), overlayContent.Add, true);
+            loadComponentSingleFile(tatakaeOverlay = new TatakaeOverlay(ScreenContainer), overlayContent.Add, true);
 
             loadComponentSingleFile(new LoginOverlay
             {
@@ -1610,6 +1614,11 @@ namespace osu.Game
 
                 case GlobalAction.ToggleSkinEditor:
                     skinEditor.ToggleVisibility();
+                    return true;
+
+                case GlobalAction.ToggleTatakaeOverlay:
+                    Logger.Log("Toggling visibility of Tatakae overlay");
+                    tatakaeOverlay.ToggleVisibility();
                     return true;
 
                 case GlobalAction.ResetInputSettings:

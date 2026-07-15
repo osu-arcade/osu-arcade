@@ -369,6 +369,13 @@ namespace osu.Game.Localisation
         /// </summary>
         public static LocalisableString FastForwardReplay => new TranslatableString(getKey(@"fast_forward_replay"), @"Fast forward replay");
 
+
+        /// <summary>
+        /// "Operator key (toggle overlay)"
+        /// </summary>
+        public static LocalisableString ToggleTatakaeOverlay => new TranslatableString(getKey(@"toggle_tatakae_overlay"), @"Operator key (toggle overlay)");
+
+
         /// <summary>
         /// "Toggle chat focus"
         /// </summary>

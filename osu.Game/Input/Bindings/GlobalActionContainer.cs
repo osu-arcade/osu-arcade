@@ -33,6 +33,7 @@ namespace osu.Game.Input.Bindings
         /// It is used to decide the order of precedence, with the earlier items having higher precedence.
         /// </remarks>
         public override IEnumerable<IKeyBinding> DefaultKeyBindings => globalKeyBindings
+                                                                       .Concat(tatakaeKeyBindings)
                                                                        .Concat(editorKeyBindings)
                                                                        .Concat(editorTestPlayKeyBindings)
                                                                        .Concat(inGameKeyBindings)
@@ -71,6 +72,9 @@ namespace osu.Game.Input.Bindings
 
                 case GlobalActionCategory.EditorTestPlay:
                     return editorTestPlayKeyBindings;
+
+                case GlobalActionCategory.Tatakae:
+                    return tatakaeKeyBindings;
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(category), category, $"Unexpected {nameof(GlobalActionCategory)}");
@@ -112,6 +116,11 @@ namespace osu.Game.Input.Bindings
             new KeyBinding(InputKey.F12, GlobalAction.TakeScreenshot),
         };
 
+        private static IEnumerable<KeyBinding> tatakaeKeyBindings => new[]
+        {
+            new KeyBinding(InputKey.ScrollLock, GlobalAction.ToggleTatakaeOverlay),
+            new KeyBinding(InputKey.None, GlobalAction.ToggleTatakaeOverlay),
+        };
         private static IEnumerable<KeyBinding> overlayKeyBindings => new[]
         {
             new KeyBinding(InputKey.F8, GlobalAction.ToggleChat),
@@ -539,7 +548,11 @@ namespace osu.Game.Input.Bindings
         EditorEditExternally,
 
         [LocalisableDescription(typeof(GlobalActionKeyBindingStrings), nameof(GlobalActionKeyBindingStrings.FastForwardReplay))]
-        FastForwardReplay
+        FastForwardReplay,
+
+        [LocalisableDescription(typeof(GlobalActionKeyBindingStrings), nameof(GlobalActionKeyBindingStrings.ToggleTatakaeOverlay))]
+        ToggleTatakaeOverlay
+
     }
 
     public enum GlobalActionCategory
@@ -552,5 +565,6 @@ namespace osu.Game.Input.Bindings
         AudioControl,
         Overlays,
         EditorTestPlay,
+        Tatakae,
     }
 }

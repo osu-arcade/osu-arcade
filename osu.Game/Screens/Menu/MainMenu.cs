@@ -277,8 +277,6 @@ namespace osu.Game.Screens.Menu
         [CanBeNull]
         private ScheduledDelegate mobileDisclaimerSchedule;
 
-        [CanBeNull]
-        private ScheduledDelegate arcadeDisclaimerSchedule;
 
         protected override void LogoArriving(OsuLogo logo, bool resuming)
         {
@@ -314,19 +312,23 @@ namespace osu.Game.Screens.Menu
 
         private bool onLogoClick(Func<bool> originalAction)
         {
-            if (showArcadeDisclaimer.Value)
-            {
-                arcadeDisclaimerSchedule?.Cancel();
-                arcadeDisclaimerSchedule = Scheduler.AddDelayed(() =>
-                {
-                    dialogOverlay.Push(new ArcadeDisclaimerDialog(() =>
-                    {
-                        // showArcadeDisclaimer.Value = false;
-                        // displayLoginIfApplicable();
-                    }));
-                }, 500);
-            }
-            else if (showMobileDisclaimer.Value)
+            // if (showArcadeDisclaimer.Value)
+            // {
+            //     arcadeDisclaimerSchedule?.Cancel();
+            //     arcadeDisclaimerSchedule = Scheduler.AddDelayed(() =>
+            //     {
+            //         dialogOverlay.Push(new ArcadeDisclaimerDialog(() =>
+            //         {
+            //             showArcadeDisclaimer.Value = false;
+
+            //             // TTKTODO: tatakae settings should eventually be placed over top of usermode
+            //             // so that we can more easily lock out critical settings like display
+            //             settings.ShowAtControl<TatakaeSection>();
+            //             // displayLoginIfApplicable();
+            //         }));
+            //     }, 500);
+            // }
+            if (showMobileDisclaimer.Value)
             {
                 mobileDisclaimerSchedule?.Cancel();
                 mobileDisclaimerSchedule = Scheduler.AddDelayed(() =>
@@ -526,36 +528,38 @@ namespace osu.Game.Screens.Menu
             }
         }
 
-        // copied from the mobile dialog because i want to share a similar message
-        private partial class ArcadeDisclaimerDialog : PopupDialog
-        {
-            public ArcadeDisclaimerDialog(Action confirmed)
-            {
-                HeaderText = "Welcome to tatakae!";
-                BodyText =
-@"By default, you are in operator/event mode (or just regular osu!).
+        // lucy: copied out for overlay replacement
+        //         // copied from the mobile dialog because i want to share a similar message
+        //         private partial class ArcadeDisclaimerDialog : PopupDialog
+        //         {
 
-To enable and configure arcade mode, head to the added 'tatakae!' tab in the settings.
+        //             public ArcadeDisclaimerDialog(Action settings)
+        //             {
+        //                 HeaderText = "Welcome to tatakae!";
+        //                 BodyText =
+        // @"By default, you are in operator/event mode (or just regular osu!).
 
-Please share any feedback at:
-github.com/osu-tatakae/tatakae";
+        // To enable and configure arcade mode, head to the added 'tatakae!' tab in the settings.
 
-                Icon = FontAwesome.Solid.SmileBeam;
+        // Please share any feedback at:
+        // github.com/osu-tatakae/tatakae";
 
-                Buttons = new PopupDialogButton[]
-                {
-                    new PopupDialogOkButton
-                    {
-                        Text = "Take me to those settings now",
-                        Action = confirmed
-                    },
-                    new PopupDialogCancelButton
-                    {
-                        Text = ButtonSystemStrings.MobileDisclaimerOkButton,
-                        Action = confirmed,
-                    }
-                };
-            }
-        }
+        //                 Icon = FontAwesome.Solid.SmileBeam;
+
+        //                 Buttons = new PopupDialogButton[]
+        //                 {
+        //                     new PopupDialogOkButton
+        //                     {
+        //                         Text = "Take me to those settings now",
+        //                         Action = settings
+        //                     },
+        //                     new PopupDialogCancelButton
+        //                     {
+        //                         Text = ButtonSystemStrings.MobileDisclaimerOkButton,
+        //                     }
+        //                 };
+        //             }
+
+        //         }
     }
 }
