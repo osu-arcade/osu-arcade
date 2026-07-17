@@ -47,7 +47,8 @@ namespace osu.Game.Overlays
                 new GameplaySection(),
                 new RulesetSection(),
                 new AudioSection(),
-                // new GraphicsSection(),
+                // temporarily re-added while not in tatakae overlay
+                new GraphicsSection(),
                 // new OnlineSection(),
                 // new MaintenanceSection(),
                 // new DebugSection()

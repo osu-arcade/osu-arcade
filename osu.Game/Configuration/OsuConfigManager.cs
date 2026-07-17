@@ -173,7 +173,6 @@ namespace osu.Game.Configuration
 
             SetDefault(OsuSetting.ShowFirstRunSetup, true);
             SetDefault(OsuSetting.ShowMobileDisclaimer, RuntimeInfo.IsMobile);
-            SetDefault(OsuSetting.ShowArcadeDisclaimer, true);
 
             SetDefault(OsuSetting.ScreenshotFormat, ScreenshotFormat.Jpg);
             SetDefault(OsuSetting.ScreenshotCaptureMenuCursor, false);
@@ -459,7 +458,6 @@ namespace osu.Game.Configuration
         MultiplayerShowInProgressFilter,
         BeatmapListingFeaturedArtistFilter,
         ShowMobileDisclaimer,
-        ShowArcadeDisclaimer,
         EditorShowStoryboard,
         EditorSubmissionNotifyOnDiscussionReplies,
         EditorSubmissionLoadInBrowserAfterSubmission,

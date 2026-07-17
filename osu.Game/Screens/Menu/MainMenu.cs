@@ -97,7 +97,6 @@ namespace osu.Game.Screens.Menu
         private Bindable<double> holdDelay;
         private Bindable<bool> loginDisplayed;
         private Bindable<bool> showMobileDisclaimer;
-        private Bindable<bool> showArcadeDisclaimer;
 
         private HoldToExitGameOverlay holdToExitGameOverlay;
 
@@ -126,7 +125,6 @@ namespace osu.Game.Screens.Menu
             holdDelay = config.GetBindable<double>(OsuSetting.UIHoldActivationDelay);
             loginDisplayed = statics.GetBindable<bool>(Static.LoginOverlayDisplayed);
             showMobileDisclaimer = config.GetBindable<bool>(OsuSetting.ShowMobileDisclaimer);
-            showArcadeDisclaimer = config.GetBindable<bool>(OsuSetting.ShowArcadeDisclaimer);
 
             if (host.CanExit)
             {

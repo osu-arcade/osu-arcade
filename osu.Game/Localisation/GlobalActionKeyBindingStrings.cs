@@ -371,10 +371,9 @@ namespace osu.Game.Localisation
 
 
         /// <summary>
-        /// "Operator key (toggle overlay)"
+        /// "Operator key (open tatakae! screen)"
         /// </summary>
-        public static LocalisableString ToggleTatakaeOverlay => new TranslatableString(getKey(@"toggle_tatakae_overlay"), @"Operator key (toggle overlay)");
-
+        public static LocalisableString ToggleTatakaeScreen => new TranslatableString(getKey(@"toggle_tatakae_overlay"), @"Operator key (open tatakae! screen)");
 
         /// <summary>
         /// "Toggle chat focus"

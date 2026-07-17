@@ -58,7 +58,6 @@ using osu.Game.Overlays.Music;
 using osu.Game.Overlays.Notifications;
 using osu.Game.Overlays.OSD;
 using osu.Game.Overlays.SkinEditor;
-using osu.Game.Overlays.Tatakae;
 using osu.Game.Overlays.Toolbar;
 using osu.Game.Rulesets.Mods;
 using osu.Game.Scoring;
@@ -75,6 +74,7 @@ using osu.Game.Screens.Play;
 using osu.Game.Screens.Play.Leaderboards;
 using osu.Game.Screens.Ranking;
 using osu.Game.Screens.Select;
+using osu.Game.Screens.Tatakae;
 using osu.Game.Seasonal;
 using osu.Game.Skinning;
 using osu.Game.Updater;
@@ -145,7 +145,6 @@ namespace osu.Game
 
         private SkinEditorOverlay skinEditor;
 
-        private TatakaeOverlay tatakaeOverlay;
 
         private Container overlayContent;
 
@@ -1237,7 +1236,6 @@ namespace osu.Game
             loadComponentSingleFile(beatmapSetOverlay = new BeatmapSetOverlay(), overlayContent.Add, true);
             loadComponentSingleFile(wikiOverlay = new WikiOverlay(), overlayContent.Add, true);
             loadComponentSingleFile(skinEditor = new SkinEditorOverlay(ScreenContainer), overlayContent.Add, true);
-            loadComponentSingleFile(tatakaeOverlay = new TatakaeOverlay(ScreenContainer), overlayContent.Add, true);
 
             loadComponentSingleFile(new LoginOverlay
             {
@@ -1624,9 +1622,12 @@ namespace osu.Game
                     skinEditor.ToggleVisibility();
                     return true;
 
-                case GlobalAction.ToggleTatakaeOverlay:
-                    Logger.Log("Toggling visibility of Tatakae overlay");
-                    tatakaeOverlay.ToggleVisibility();
+                case GlobalAction.ToggleTatakaeScreen:
+                    if (ScreenStack.CurrentScreen is TatakaeScreen)
+                        ScreenStack.Exit();
+                    else
+                        ScreenStack.Push(new TatakaeScreen());
+
                     return true;
 
                 case GlobalAction.ResetInputSettings:

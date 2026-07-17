@@ -5,7 +5,8 @@ purpose of this file: if anything breaks track down all changes we made from bas
 format: \<change> \<file(s) where change was made>
 
 - Adjust first boot screen to be operator-focused [FirstRunSetupOverlay.cs](./osu.Game/Overlays/FirstRunSetupOverlay.cs)
-- Add global tatakae! overlay [TatakaeOverlay.cs](./osu.Game/Overlays/Tatakae/TatakaeOverlay.cs)
+<!-- - Add global tatakae! overlay [TatakaeOverlay.cs](./osu.Game/Overlays/Tatakae/TatakaeOverlay.cs) -->
+- Add global keybind to open special tatakae! screen [TatakaeScreen.cs](./osu.Game/Screens/Tatakae/TatakaeScreen.cs)
 - Many settings changed or off by default [OsuConfigManager.cs](./osu.Game/Configuration/OsuConfigManager.cs)
 - Add banner displaying current mode of operation [TatakaeModeBanner.cs](./osu.Game/Overlays/TatakaeModeBanner.cs) [TatakaeMode.cs](./osu.Game/Tatakae/Configuration/TatakaeMode.cs)
 - Change main menu buttons to be one layer only [ButtonSystem.cs](./osu.Game/Screens/Menu/ButtonSystem.cs)

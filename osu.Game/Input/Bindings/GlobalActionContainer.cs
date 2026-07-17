@@ -118,8 +118,8 @@ namespace osu.Game.Input.Bindings
 
         private static IEnumerable<KeyBinding> tatakaeKeyBindings => new[]
         {
-            new KeyBinding(InputKey.ScrollLock, GlobalAction.ToggleTatakaeOverlay),
-            new KeyBinding(InputKey.None, GlobalAction.ToggleTatakaeOverlay),
+            new KeyBinding(InputKey.ScrollLock, GlobalAction.ToggleTatakaeScreen),
+            new KeyBinding(InputKey.None, GlobalAction.ToggleTatakaeScreen),
         };
         private static IEnumerable<KeyBinding> overlayKeyBindings => new[]
         {
@@ -550,8 +550,8 @@ namespace osu.Game.Input.Bindings
         [LocalisableDescription(typeof(GlobalActionKeyBindingStrings), nameof(GlobalActionKeyBindingStrings.FastForwardReplay))]
         FastForwardReplay,
 
-        [LocalisableDescription(typeof(GlobalActionKeyBindingStrings), nameof(GlobalActionKeyBindingStrings.ToggleTatakaeOverlay))]
-        ToggleTatakaeOverlay
+        [LocalisableDescription(typeof(GlobalActionKeyBindingStrings), nameof(GlobalActionKeyBindingStrings.ToggleTatakaeScreen))]
+        ToggleTatakaeScreen
 
     }
 
